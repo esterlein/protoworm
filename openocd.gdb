@@ -5,13 +5,15 @@ set print asm-demangle on
 set print pretty on
 set style sources off
 
-monitor tpiu config internal itm.txt uart off 8000000
-monitor itm port 0 on
+set backtrace limit 32
+
+monitor arm semihosting enable
 
 
 break main
 break DefaultHandler
 break HardFault
+
 
 continue
 step
